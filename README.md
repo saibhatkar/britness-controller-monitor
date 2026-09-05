@@ -1,10 +1,13 @@
 # GS27QA Brightness Widget
 
-Windows tray app to control **Gigabyte GS27QA** brightness without using the monitor buttons or Gigabyte Control Center.
+Floating **desktop widget** to control **Gigabyte GS27QA** brightness (no monitor buttons / no USB).
 
-## Why this works without USB
+> This is a desktop floating widget (always visible panel), not the Win+W Widgets Board.
+> Official Win+W widgets need Visual Studio + C# WinAppSDK + MSIX packaging.
 
-Your GS27QA has no USB port. Brightness is sent with **DDC/CI** over the **HDMI or DisplayPort** cable (same path Gigabyte OSD Sidekick uses). This was verified on your PC: the monitor appears as `Gigabyte Generic Monitor` and accepts VCP brightness.
+## Why no USB is needed
+
+Brightness uses **DDC/CI** over **HDMI / DisplayPort**. Verified on this PC as `Gigabyte Generic Monitor`.
 
 ## Run
 
@@ -16,16 +19,15 @@ python app.py
 
 Or double-click `run.bat`.
 
-## Features
+## Widget controls
 
-- System tray icon — click **Open brightness** for the slider
-- Presets: Night 20%, Desk 50%, Bright 80%, Max 100%
-- Keyboard while the window is focused: `Ctrl+Shift+Up` / `Ctrl+Shift+Down`
-- Prefers the Gigabyte display if multiple monitors are connected
-- Falls back to software gamma dimming if DDC/CI fails (e.g. HDR lock)
+- **Drag** the title bar to move it on the desktop
+- **Slider** + quick presets `20 / 50 / 80 / 100`
+- **Pin** keeps it always on top
+- **Hide** sends it to the system tray (right-click tray → Show widget / Quit)
+- Remembers last position
 
 ## Tips
 
-- Use a direct HDMI/DP cable (not a dock that strips DDC)
-- If brightness does not change, turn **HDR** off temporarily and retry
-- Keep Gigabyte Control Center closed if it fights for control of the same settings
+- Direct HDMI/DP cable works best
+- If slider does nothing, turn **HDR** off and retry
